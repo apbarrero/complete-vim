@@ -30,7 +30,7 @@ for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && [ ! -L $i ] && m
 
 if [ ! -e $endpath/.git ]; then
     echo "cloning complete-vim"
-    git clone --recursive http://github.com/apbarrero/complete-vim.git $endpath
+    git clone --recursive -b develop http://github.com/apbarrero/complete-vim.git $endpath
 else
     echo "updating complete-vim"
     cd $endpath && git pull
