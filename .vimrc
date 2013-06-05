@@ -1,18 +1,6 @@
 " Modeline and Notes {
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
-"                    __ _ _____              _
-"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-"            |_|
-"
-"   This is the personal .vimrc file of Steve Francia.
-"   While much of it is beneficial for general use, I would
-"   recommend picking out the parts you want and understand.
-"
-"   You can find me at http://spf13.com
 " }
 
 " Environment {
@@ -82,8 +70,8 @@
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
     " your .vimrc.bundles.local file:
-    "   let g:spf13_no_autochdir = 1
-    if !exists('g:spf13_no_autochdir')
+    "   let g:compvim_no_autochdir = 1
+    if !exists('g:compvim_no_autochdir')
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
         " Always switch to the current file directory
     endif
@@ -105,8 +93,8 @@
         endif
 
         " To disable views add the following to your .vimrc.bundles.local file:
-        "   let g:spf13_no_views = 1
-        if !exists('g:spf13_no_views')
+        "   let g:compvim_no_views = 1
+        if !exists('g:compvim_no_views')
             " Add exclusions to mkview and loadview
             " eg: *.*, svn-commit.tmp
             let g:skipview_files = [
@@ -192,11 +180,11 @@
     " The default leader is '\', but many people prefer ',' as it's in a standard
     " location. To override this behavior and set it back to '\' (or any other
     " character) add the following to your .vimrc.bundles.local file:
-    "   let g:spf13_leader='\'
-    if !exists('g:spf13_leader')
+    "   let g:compvim_leader='\'
+    if !exists('g:compvim_leader')
         let mapleader = ','
     else
-        let mapleader=g:spf13_leader
+        let mapleader=g:compvim_leader
     endif
 
     " Easier moving in tabs and windows
@@ -213,14 +201,14 @@
     " bottom of the screen
     " If you prefer that functionality, add the following to your
     " .vimrc.bundles.local file:
-    "   let g:spf13_no_fastTabs = 1
-    if !exists('g:spf13_no_fastTabs')
+    "   let g:compvim_no_fastTabs = 1
+    if !exists('g:compvim_no_fastTabs')
         map <S-H> gT
         map <S-L> gt
     endif
 
     " Stupid shift key fixes
-    if !exists('g:spf13_no_keyfixes')
+    if !exists('g:compvim_no_keyfixes')
         if has("user_commands")
             command! -bang -nargs=* -complete=file E e<bang> <args>
             command! -bang -nargs=* -complete=file W w<bang> <args>
@@ -516,7 +504,7 @@
     " }
 
     " indent_guides {
-        if !exists('g:spf13_no_indent_guides_autocolor')
+        if !exists('g:compvim_no_indent_guides_autocolor')
             let g:indent_guides_auto_colors = 1
         else
             " For some colorscheme, autocolor will not work, like 'desert', 'ir_black'.
@@ -582,10 +570,10 @@
         " To specify a different directory in which to place the vimbackup,
         " vimviews, vimundo, and vimswap files/directories, add the following to
         " your .vimrc.local file:
-        "   let g:spf13_consolidated_directory = <full path to desired directory>
-        "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
-        if exists('g:spf13_consolidated_directory')
-            let common_dir = g:spf13_consolidated_directory . prefix
+        "   let g:compvim_consolidated_directory = <full path to desired directory>
+        "   eg: let g:compvim_consolidated_directory = $HOME . '/.vim/'
+        if exists('g:compvim_consolidated_directory')
+            let common_dir = g:compvim_consolidated_directory . prefix
         else
             let common_dir = parent . '/.' . prefix
         endif
@@ -626,8 +614,8 @@
     function! StripTrailingWhitespace()
         " To disable the stripping of whitespace, add the following to your
         " .vimrc.local file:
-        "   let g:spf13_keep_trailing_whitespace = 1
-        if !exists('g:spf13_keep_trailing_whitespace')
+        "   let g:compvim_keep_trailing_whitespace = 1
+        if !exists('g:compvim_keep_trailing_whitespace')
             " Preparation: save last search, and cursor position.
             let _s=@/
             let l = line(".")
